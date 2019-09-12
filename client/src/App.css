@@ -31,3 +31,43 @@
     transform: rotate(360deg);
   }
 }
+
+#hero, #text {
+  background-color: rgba(128, 128, 128, 0.438);
+  height: 80vw;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#navbar {
+  height: 50px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background-color: rgb(235, 235, 235);
+  display: flex;
+}
+
+#logo {
+  width: 100px;
+  justify-self: flex-start;
+}
+
+#navbar-links {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+
+#nav-form {
+  display: flex;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+#footer {
+  background-color: grey;
+  height: 50px;
+  width: 100%;
+}
