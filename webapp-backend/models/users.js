@@ -34,6 +34,23 @@ var USUARIO = {
 
         return db.query(queryString,DATA_FIELDS , callback);
     },
+    selectAll: function (callback) {
+        var queryString = "SELECT "
+                            + "Usuario." + ID               + ", "
+                            + "Usuario." + NOME             + ", "
+                            + "Usuario." + EMAIL            + ", "
+                            + "Usuario." + SENHA            + ", "
+                            + "Usuario." + AREA_ATUACAO     + ", "
+                            + "Usuario." + CONHECIMENTO     + ", "
+                            + "Usuario." + FACEBOOK         + ", "
+                            + "Usuario." + LINKEDIN         + ", "
+                            + "Usuario." + GITHUB           + ", "
+                            + "Usuario." + OUTRO            + ", "
+                            + "Usuario." + PROFISSAO        + 
+                            " FROM "     + TABELA;
+
+        return db.query(queryString, callback);
+    },
     insert: function (data, callback) {
         var queryString =   "INSERT INTO " + TABELA + " ( "
                             + ORGANIZADOR  + ", "

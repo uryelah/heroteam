@@ -8,6 +8,17 @@ router.get('/', function(req, res, next) {
 });
 
 
+router.get('/all',function (req, res, next) {
+  Produto.selectAll(function (err, rows) {
+      if (err) {
+          res.json(err);
+      } else {
+          res.json(rows);
+      }
+  });
+}
+);
+
 // Rota para autenticação do usuario
 /*
 ACESSO: http://localhost:5000/users/login
