@@ -34,20 +34,6 @@ var USUARIO = {
 
         return db.query(queryString,DATA_FIELDS , callback);
     },
-    test: function (data,callback) {
-        var queryString =  "SELECT "
-                            + "USUARIO." + NOME         + ", "
-                            + "USUARIO." + EMAIL        + 
-                            
-                            " FROM " + TABELA + " WHERE " + NOME +" = ? OR " + EMAIL + " = ?";
-
-        var DATA_FIELDS = [ 
-            data.nome       ,
-            data.email      
-        ];
-
-        return db.query(queryString,DATA_FIELDS , callback);
-    },
     insert: function (data, callback) {
         var queryString =   "INSERT INTO " + TABELA + " ( "
                             + ORGANIZADOR  + ", "
@@ -80,11 +66,11 @@ var USUARIO = {
         return db.query(queryString, DATA_FIELDS, callback);
     },
     delete: function (data, callback) {
-        var queryString = "UPDATE " + TABELA + " SET " 
-                            + ATIVO + " = 'F' " +
-                            " WHERE " + COD + " = ? ";
+        var queryString = "DELETE FROM " + TABELA + 
+                          " WHERE " + ID + " = ? ";
         var DATA_FIELDS = [
-            data.cod];
+            data.id
+        ];
 
         return db.query(queryString, DATA_FIELDS, callback);
     },
@@ -94,15 +80,41 @@ var USUARIO = {
                             + EMAIL             + " = ? , "
                             + SENHA             + " = ? , "
                             + PROFISSAO         + " = ? , "
-                            + " WHERE " +  COD  + " = ?   "
+                            + AREA_ATUACAO      + " = ? , "
+                            + CONHECIMENTO      + " = ? , "
+                            + FACEBOOK          + " = ? , "
+                            + LINKEDIN          + " = ? , "
+                            + GITHUB            + " = ? , "
+                            + OUTRO             + " = ?   "
+                            + " WHERE " +  ID  + " = ?   "
         var DATA_FIELDS = [
-            data.nome       , 
-            data.email      ,
-            data.senha      ,
-            data.profissao  ,
+            data.nome           , 
+            data.email          ,
+            data.senha          ,
+            data.profissao      ,
+            data.area_atuacao   ,
+            data.conhecimento   ,
+            data.facebook       ,
+            data.linkedin       ,
+            data.github         ,
+            data.outro          ,
+            data.id                      
         ];
 
         return db.query(queryString, DATA_FIELDS, callback);
-    }
+    },
+    team: function (data, callback) {
+        var queryString = "UPDATE " + TABELA + " SET " 
+                            + ID_TIME           + " = ? , "
+                            + DISPONIVEL        + " = ?   "
+                            + " WHERE " +  ID   + " = ?   "
+        var DATA_FIELDS = [
+            data.id_time    ,
+            data.disponivel ,
+            data.id  
+        ];
+
+        return db.query(queryString, DATA_FIELDS, callback);
+    }, 
 };
 module.exports = USUARIO;

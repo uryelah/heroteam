@@ -71,4 +71,77 @@ router.post('/cadastro', function (req, res, next) {
   }
 });
 
+/*
+  ACESSO: http://localhost:5000/users/update
+  {
+    "nome"          :   ""  , 
+    "email"         :   ""  ,
+    "senha"         :   ""  ,
+    "profissao"     :   ""  ,
+    "area_atuacao"  :   ""  ,
+    "conhecimento"  :   ""  ,
+    "facebook"      :   ""  ,
+    "linkedin"      :   ""  ,
+    "github"        :   ""  ,
+    "outro"         :   ""  ,
+    "id"            :   ""
+  }       
+*/
+
+router.post('/update', function (req, res, next) {
+  usuario.update(req.body, function (err, rows) {
+      if (err) {
+          res.json(err);
+          //res.send("Ocorreu um erro ao atualizar seu perfil!");
+      } 
+      else {
+          res.json(rows.message);    
+      }
+  });
+});
+
+/*
+  ACESSO: http://localhost:5000/users/team
+  {
+    "id_time"    :  ""  ,
+    "disponivel" :  ""  ,
+    "id"         :  ""
+  }       
+*/
+
+router.post('/team', function (req, res, next) {
+  usuario.team(req.body, function (err, rows) {
+      if (err) {
+          //res.json(err);
+          res.send("Ocorreu um erro ao entrar no time!");
+      } 
+      else {
+          res.json(rows.message);    
+          
+      }
+  });
+});
+
+/*
+  // Deleta um usuario a partir do "id"
+  ACESSO: http://localhost:5000/users/delete
+  {
+    "id"         :  ""
+  }       
+*/
+
+router.delete('/delete', function (req, res, next) {
+  usuario.delete(req.body, function (err, rows) {
+      if (err) {
+          //res.json(err);
+          res.send("Ocorreu um erro ao deletar o usuario!");
+      } 
+      else {
+          res.send("Usuario excluido com sucesso!");    
+          
+      }
+  });
+});
+
+
 module.exports = router;
