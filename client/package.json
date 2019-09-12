@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && copyfiles --flat build/* ../ && copyfiles --flat build/static/css/* ../static/css/ && copyfiles --flat build/static/js/* ../static/js/ && copyfiles --flat build/static/media/* ../static/media/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
