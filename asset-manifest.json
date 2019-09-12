@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/heroteam/client/static/css/main.ba49ec77.chunk.css",
-    "main.js": "/heroteam/client/static/js/main.fb043560.chunk.js",
-    "main.js.map": "/heroteam/client/static/js/main.fb043560.chunk.js.map",
-    "runtime~main.js": "/heroteam/client/static/js/runtime~main.f6dd56b3.js",
-    "runtime~main.js.map": "/heroteam/client/static/js/runtime~main.f6dd56b3.js.map",
-    "static/js/2.6bffc8c4.chunk.js": "/heroteam/client/static/js/2.6bffc8c4.chunk.js",
-    "static/js/2.6bffc8c4.chunk.js.map": "/heroteam/client/static/js/2.6bffc8c4.chunk.js.map",
-    "index.html": "/heroteam/client/index.html",
-    "precache-manifest.c7f44892e13681fb7dfbbf8e34ce334d.js": "/heroteam/client/precache-manifest.c7f44892e13681fb7dfbbf8e34ce334d.js",
-    "service-worker.js": "/heroteam/client/service-worker.js",
-    "static/css/main.ba49ec77.chunk.css.map": "/heroteam/client/static/css/main.ba49ec77.chunk.css.map",
-    "static/media/logo.svg": "/heroteam/client/static/media/logo.ee7cd8ed.svg"
+    "main.css": "/heroteam/static/css/main.ba49ec77.chunk.css",
+    "main.js": "/heroteam/static/js/main.33081d63.chunk.js",
+    "main.js.map": "/heroteam/static/js/main.33081d63.chunk.js.map",
+    "runtime~main.js": "/heroteam/static/js/runtime~main.042d1345.js",
+    "runtime~main.js.map": "/heroteam/static/js/runtime~main.042d1345.js.map",
+    "static/js/2.6bffc8c4.chunk.js": "/heroteam/static/js/2.6bffc8c4.chunk.js",
+    "static/js/2.6bffc8c4.chunk.js.map": "/heroteam/static/js/2.6bffc8c4.chunk.js.map",
+    "index.html": "/heroteam/index.html",
+    "precache-manifest.183ff267b1fcd29eee8ecd62e753ca6a.js": "/heroteam/precache-manifest.183ff267b1fcd29eee8ecd62e753ca6a.js",
+    "service-worker.js": "/heroteam/service-worker.js",
+    "static/css/main.ba49ec77.chunk.css.map": "/heroteam/static/css/main.ba49ec77.chunk.css.map",
+    "static/media/logo.svg": "/heroteam/static/media/logo.ee7cd8ed.svg"
   }
 }
