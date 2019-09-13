@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/all',function (req, res, next) {
-  Produto.selectAll(function (err, rows) {
+  usuario.selectAll(function (err, rows) {
       if (err) {
           res.json(err);
       } else {
@@ -85,7 +85,7 @@ router.post('/cadastro', function (req, res, next) {
 /*
   ACESSO: http://localhost:5000/users/update
   {
-    "nome"          :   ""  , 
+    "nick"          :   ""  , 
     "email"         :   ""  ,
     "senha"         :   ""  ,
     "profissao"     :   ""  ,

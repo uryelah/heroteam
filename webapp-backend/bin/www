@@ -51,8 +51,18 @@ io.on('connection',socket =>{
   console.log("Usuario "+ socket.id + " connectado!")
 
   socket.on('chat',(data)=>{
-      socket.emit('MessageReaceived',data);
+      io.to (data.sala).emit('MessageReaceived',data)
       console.log(data);
+  });
+
+  socket.on('join',(data)=>{
+    socket.join(data.sala);
+    io.to (data.sala).emit('MessageReaceived',"Usuario: "+data.nickname+" entrou na sala!")
+  });
+
+  socket.on('leave',(data)=>{
+    io.to (data.sala).emit('MessageReaceived',"Usuario saiu da sala!")
+    socket.leave(data);
   });
 
   socket.on('disconnect', ()=>{

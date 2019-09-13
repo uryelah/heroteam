@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var team = require('../models/team.js');
+var projeto = require('../models/projeto.js');
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+/*
+    "id_time":""
+*/
 
-router.get('/all',function (req, res, next) {
-  team.selectAll(function (err, rows) {
+router.get('/team',function (req, res, next) {
+  projeto.selectProjeto(req.body,function (err, rows) {
       if (err) {
           res.json(err);
       } else {
@@ -18,23 +21,11 @@ router.get('/all',function (req, res, next) {
 }
 );
 
-/*
-    "id_hackathon":"",
-	"team_leader":"",
-	"nome":"",
-	"descricao":"",
-	"n_participante":"",
-	"completo":"",
-	"devs":"",
-	"designers":"",
-	"business":"",
-    "marketing":"" 
-*/
 
 router.post('/insert', function (req, res, next) {
   
   if (req.body.nome != "" && req.body.email != "" && req.body.senha != ""){
-    team.insert(req.body, function (err, rows) {
+    projeto.insert(req.body, function (err, rows) {
         if (err) {
           //res.json(err);
           res.send("Ocorreu um erro ao criar o seu time!");
@@ -50,21 +41,16 @@ router.post('/insert', function (req, res, next) {
   }
 });
 
-/*	
-    "team_leader":"",
+/*
+  "team_leader":"",
 	"nome":"",
 	"descricao":"",
-	"n_participante":"",
-	"completo":"",
-	"devs":"",
-	"designers":"",
-	"business":"",
-	"marketing":"",
-    "id":""
+	"link":""
 */
 
+
 router.post('/update', function (req, res, next) {
-  team.update(req.body, function (err, rows) {
+  projeto.update(req.body, function (err, rows) {
       if (err) {
           res.json(err);
           //res.send("Ocorreu um erro ao atualizar seu perfil!");
@@ -75,18 +61,21 @@ router.post('/update', function (req, res, next) {
   });
 });
 
+/*
+  "id":""
+*/
+
 router.delete('/delete', function (req, res, next) {
-  team.delete(req.body, function (err, rows) {
+  projeto.delete(req.body, function (err, rows) {
       if (err) {
           //res.json(err);
-          res.send("Ocorreu um erro ao deletar o team!");
+          res.send("Ocorreu um erro ao deletar o projeto!");
       } 
       else {
-          res.send("team excluido com sucesso!");    
+          res.send("projeto excluido com sucesso!");    
           
       }
   });
 });
-
 
 module.exports = router;
