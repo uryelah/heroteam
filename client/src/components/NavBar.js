@@ -3,12 +3,13 @@ import NavbarLinkRow from "./NavbarLinkRow";
 import Logo from "./Logo"
 import FormArea from "./FormArea";
 
-function Navbar() {
+function Navbar(props) {
+  let {page} = props;
   return (
     <div id="navbar" style={{ boxShadow: "0 2px 0 0 var(--conpass-glacier)" }}>
       <Logo />
       <NavbarLinkRow />
-      <FormArea />
+      {page === "landing" ? <FormArea /> : <spam>Logout</spam>}  
     </div>
   );
 }

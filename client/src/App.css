@@ -41,6 +41,7 @@
 }
 
 #navbar {
+  z-index: 100;
   height: 50px;
   width: 100%;
   top: 0;
@@ -70,4 +71,82 @@
   background-color: grey;
   height: 50px;
   width: 100%;
+}
+
+#userSearch {
+  width: 300px;
+  right: 0;
+  top: 50px;
+  background-color: #61dafb;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#userSearch input {
+  position: absolute;
+  top: 20px;
+}
+
+.userCard {
+  display: none;
+}
+
+.myUserCard {
+  display: block;
+  text-align: left;
+  border: 2px solid pink;
+  flex-shrink: 1;
+}
+
+.userLink:hover .userCard {
+  display: flex;
+  flex-flow: column nowrap;
+  border: 2px solid pink;
+  background-color: aliceblue;
+  width: 200px;
+}
+
+.chatWindow {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 250px);
+  background-color: purple;
+}
+
+.Hackathon {
+  width: 500px;
+  height: 100px;
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 250px);
+  background-color: greenyellow;
+  overflow: hidden;
+}
+
+#InviteContainer {
+  height: 200px;
+  width: 300px;
+  background-color: pink;
+}
+
+#dashboardRight {
+  top: 50px;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 30%;
+  height: 100%;
+}
+
+#dashboardLeft {
+  top: 50px;
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 30%;
+  height: 100%;
 }

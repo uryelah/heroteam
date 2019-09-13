@@ -7,7 +7,7 @@ import TextSection from "./TextSection";
 function LandingPage() {
   return (
     <div id="landing">
-      <NavBar />
+      <NavBar page="landing"/>
         <HeroImage/>
         <TextSection/>
       <Footer />
