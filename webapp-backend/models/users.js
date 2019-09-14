@@ -1,30 +1,44 @@
 var db = require('../dbconnection');
 
 var TABELA = 'USUARIO',
-    ID =                  'ID'          ,
-    ID_TIME=              'ID_TIME'     ,
-    ORGANIZADOR=          'ORGANIZADOR' ,
-    DISPONIVEL=           'DISPONIVEL'  ,
-    AREA_ATUACAO=         'AREA_ATUACAO',
-    CONHECIMENTO=         'CONHECIMENTO',
-    FACEBOOK=             'FACEBOOK'    ,
-    LINKEDIN=             'LINKEDIN'    ,
-    GITHUB=               'GITHUB'      ,
-    OUTRO=                'OUTRO'       ,
-    NOME=                 'NOME'        ,
-    EMAIL=                'EMAIL'       ,
-    SENHA=                'SENHA'       ,
-    PROFISSAO=            'PROFISSAO'   ;
+    ID =                  'ID'                  ,
+    ID_TIME=              'ID_TIME'             ,
+    ID_HACKATHON=         'ID_HACKATHON'        ,
+    ORGANIZADOR=          'ORGANIZADOR'         ,
+    NOME_COMPLETO=        'NOME_COMPLETO'       ,
+    DISPONIVEL=           'DISPONIVEL'          ,
+    AREA_ATUACAO=         'AREA_ATUACAO'        ,
+    CONHECIMENTO=         'CONHECIMENTO'        ,
+    FACEBOOK=             'FACEBOOK'            ,
+    LINKEDIN=             'LINKEDIN'            ,
+    GITHUB=               'GITHUB'              ,
+    OUTRO=                'OUTRO'               ,
+    NICK=                 'NICK'                ,
+    EMAIL=                'EMAIL'               ,
+    SENHA=                'SENHA'               ,
+    PHONE=                'PHONE'               ,
+    NASCIMENTO=           'NASCIMENTO'          ,
+    SEXO=                 'SEXO'                ,
+    HORARIO_DISPONIVEL=   'HORARIO_DISPONIVEL'  ,
+    STATUS=               'STATUS'              ,
+    EXPERIENCIA=          'EXPERIENCIA'         ,
+    PROFISSAO=            'PROFISSAO'           ;
 
 var USUARIO = {
     login: function (data,callback) {
         var queryString = "SELECT "
-                            + "USUARIO." + ID           + ", "
-                            + "USUARIO." + NOME         + ", "
-                            + "USUARIO." + EMAIL        + ", "
-                            + "USUARIO." + PROFISSAO    + 
+                            + "USUARIO." + ID               + ", "
+                            + "USUARIO." + NICK             + ", "
+                            + "USUARIO." + EMAIL            + ", "
+                            + "USUARIO." + AREA_ATUACAO     + ", "
+                            + "USUARIO." + CONHECIMENTO     + ", "
+                            + "USUARIO." + FACEBOOK         + ", "
+                            + "USUARIO." + LINKEDIN         + ", "
+                            + "USUARIO." + GITHUB           + ", "
+                            + "USUARIO." + OUTRO            + ", "
+                            + "USUARIO." + PROFISSAO        + 
                             
-                            " FROM " + TABELA + " WHERE " + NOME +" = ? OR " + EMAIL + " = ? AND" + " SENHA = ?";
+                            " FROM " + TABELA + " WHERE " + NICK +" = ? OR " + EMAIL + " = ? AND" + " SENHA = ?";
 
         var DATA_FIELDS = [ 
             data.nome       ,
@@ -36,48 +50,79 @@ var USUARIO = {
     },
     selectAll: function (callback) {
         var queryString = "SELECT "
-                            + "Usuario." + ID               + ", "
-                            + "Usuario." + NOME             + ", "
-                            + "Usuario." + EMAIL            + ", "
-                            + "Usuario." + SENHA            + ", "
-                            + "Usuario." + AREA_ATUACAO     + ", "
-                            + "Usuario." + CONHECIMENTO     + ", "
-                            + "Usuario." + FACEBOOK         + ", "
-                            + "Usuario." + LINKEDIN         + ", "
-                            + "Usuario." + GITHUB           + ", "
-                            + "Usuario." + OUTRO            + ", "
-                            + "Usuario." + PROFISSAO        + 
+                            + "USUARIO." + ID                   + ", "
+                            + "USUARIO." + ID_TIME              + ", "
+                            + "USUARIO." + ID_HACKATHON         + ", "
+                            + "USUARIO." + ORGANIZADOR          + ", "
+                            + "USUARIO." + DISPONIVEL           + ", "
+                            + "USUARIO." + NICK                 + ", "
+                            + "USUARIO." + NOME_COMPLETO        + ", "
+                            + "USUARIO." + SENHA                + ", "
+                            + "USUARIO." + EMAIL                + ", "
+                            + "USUARIO." + PROFISSAO            + ", "
+                            + "USUARIO." + AREA_ATUACAO         + ", "
+                            + "USUARIO." + CONHECIMENTO         + ", "
+                            + "USUARIO." + FACEBOOK             + ", "
+                            + "USUARIO." + LINKEDIN             + ", "
+                            + "USUARIO." + GITHUB               + ", "
+                            + "USUARIO." + OUTRO                + ", "
+                            + "USUARIO." + PHONE                + ", "
+                            + "USUARIO." + NASCIMENTO           + ", "
+                            + "USUARIO." + SEXO                 + ", "
+                            + "USUARIO." + HORARIO_DISPONIVEL   + ", "
+                            + "USUARIO." + STATUS               + ", "
+                            + "USUARIO." + EXPERIENCIA          + 
                             " FROM "     + TABELA;
 
         return db.query(queryString, callback);
     },
     insert: function (data, callback) {
         var queryString =   "INSERT INTO " + TABELA + " ( "
-                            + ORGANIZADOR  + ", "
-                            + NOME         + ", "
-                            + EMAIL        + ", "
-                            + SENHA        + ", "
-                            + AREA_ATUACAO + ", "
-                            + CONHECIMENTO + ", "
-                            + FACEBOOK     + ", "
-                            + LINKEDIN     + ", "
-                            + GITHUB       + ", "
-                            + OUTRO        + ", "
-                            + PROFISSAO    +
-                            ") SELECT ?,?,?,?,?,?,?,?,?,?,? WHERE NOT EXISTS (SELECT * FROM USUARIO WHERE NOME = "+"'"+data.nome+"'"+" OR EMAIL =" +"'"+data.email+"'"+")";
+                            + ID_TIME               + ", "
+                            + ID_HACKATHON          + ", "
+                            + ORGANIZADOR           + ", "
+                            + DISPONIVEL            + ", "
+                            + NICK                  + ", "
+                            + NOME_COMPLETO         + ", "
+                            + SENHA                 + ", "
+                            + EMAIL                 + ", "
+                            + PROFISSAO             + ", "
+                            + AREA_ATUACAO          + ", "
+                            + CONHECIMENTO          + ", "
+                            + FACEBOOK              + ", "
+                            + LINKEDIN              + ", "
+                            + GITHUB                + ", "
+                            + OUTRO                 + ", "
+                            + PHONE                 + ", "
+                            + NASCIMENTO            + ", "
+                            + SEXO                  + ", "
+                            + HORARIO_DISPONIVEL    + ", "
+                            + STATUS                + ", "
+                            + EXPERIENCIA           +
+                            ") SELECT ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? WHERE NOT EXISTS (SELECT * FROM USUARIO WHERE NICK = "+"'"+data.nick+"'"+" OR EMAIL =" +"'"+data.email+"'"+")";
         var DATA_FIELDS = [ 
 
-            data.organizador    ,
-            data.nome           ,
-            data.email          ,
-            data.senha          ,
-            data.area_atuacao   ,
-            data.conhecimento   ,
-            data.facebook       ,
-            data.linkedin       ,
-            data.github         ,
-            data.outro          ,
-            data.profissao     
+            data.id_time                ,
+            data.id_hackathon           ,
+            data.organizador            ,
+            data.disponivel             ,
+            data.nick                   ,
+            data.nome_completo          ,
+            data.senha                  ,
+            data.email                  ,
+            data.profissao              ,
+            data.area_atuacao           ,
+            data.conhecimento           ,
+            data.facebook               ,
+            data.linkedin               ,
+            data.github                 ,
+            data.outro                  ,
+            data.phone                  ,
+            data.nascimento             ,
+            data.sexo                   ,
+            data.horario_disponivel     ,
+            data.status                 ,
+            data.experiencia            
         ];
 
         return db.query(queryString, DATA_FIELDS, callback);
@@ -93,29 +138,51 @@ var USUARIO = {
     },
     update: function (data, callback) {
         var queryString = "UPDATE " + TABELA + " SET " 
-                            + NOME              + " = ? , "
-                            + EMAIL             + " = ? , "
-                            + SENHA             + " = ? , "
-                            + PROFISSAO         + " = ? , "
-                            + AREA_ATUACAO      + " = ? , "
-                            + CONHECIMENTO      + " = ? , "
-                            + FACEBOOK          + " = ? , "
-                            + LINKEDIN          + " = ? , "
-                            + GITHUB            + " = ? , "
-                            + OUTRO             + " = ?   "
-                            + " WHERE " +  ID  + " = ?   "
+                            + ID_HACKATHON          + " = ? , "
+                            + ORGANIZADOR           + " = ? , "
+                            + DISPONIVEL            + " = ? , "
+                            + NICK                  + " = ? , "
+                            + NOME_COMPLETO         + " = ? , "
+                            + SENHA                 + " = ? , "
+                            + EMAIL                 + " = ? , "
+                            + PROFISSAO             + " = ? , "
+                            + AREA_ATUACAO          + " = ? , "
+                            + CONHECIMENTO          + " = ? , "
+                            + FACEBOOK              + " = ? , "
+                            + LINKEDIN              + " = ? , "
+                            + GITHUB                + " = ? , "
+                            + OUTRO                 + " = ? , "
+                            + PHONE                 + " = ? , "
+                            + NASCIMENTO            + " = ? , "
+                            + SEXO                  + " = ? , "
+                            + HORARIO_DISPONIVEL    + " = ? , "
+                            + STATUS                + " = ? , "
+                            + EXPERIENCIA           + " = ? , "
+                            + PROFISSAO             + " = ? "
+                            + "WHERE "+ ID +" = ?" ;
         var DATA_FIELDS = [
-            data.nome           , 
-            data.email          ,
-            data.senha          ,
-            data.profissao      ,
-            data.area_atuacao   ,
-            data.conhecimento   ,
-            data.facebook       ,
-            data.linkedin       ,
-            data.github         ,
-            data.outro          ,
-            data.id                      
+            data.id_hackathon           ,
+            data.organizador            ,
+            data.disponivel             ,
+            data.nick                   ,
+            data.nome_completo          ,
+            data.senha                  ,
+            data.email                  ,
+            data.profissao              ,
+            data.area_atuacao           ,
+            data.conhecimento           ,
+            data.facebook               ,
+            data.linkedin               ,
+            data.github                 ,
+            data.outro                  ,
+            data.phone                  ,
+            data.nascimento             ,
+            data.sexo                   ,
+            data.horario_disponivel     ,
+            data.status                 ,
+            data.experiencia            ,
+            data.profissao              ,
+            data.id       
         ];
 
         return db.query(queryString, DATA_FIELDS, callback);
