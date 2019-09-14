@@ -1,15 +1,15 @@
 var db = require('../dbconnection');
 
-var TABELA = 'MENTOR'      ,
+var TABELA = 'ORGANIZADORES'      ,
     ID =          'ID'            ,
     ID_USUARIO=   'ID_USUARIO'    ,
     ID_HACKATHON= 'ID_HACKATHON'  ;
 
-var MENTOR = {
-    selectMentor: function (data,callback) {
+var ORGANIZADORES = {
+    selectOrganizadores: function (data,callback) {
         var queryString = "SELECT "
-                            + "MENTOR." + ID_USUARIO       + ", "
-                            + "MENTOR." + ID_HACKATHON     +
+                            + "ORGANIZADORES." + ID_USUARIO       + ", "
+                            + "ORGANIZADORES." + ID_HACKATHON     +
                             " FROM "  + TABELA + " WHERE " + ID_HACKATHON + " = "+data.id_hackathon;
 
         return db.query(queryString, callback);
@@ -39,4 +39,4 @@ var MENTOR = {
         return db.query(queryString, DATA_FIELDS, callback);
     },
 };
-module.exports = MENTOR;
+module.exports = ORGANIZADORES;

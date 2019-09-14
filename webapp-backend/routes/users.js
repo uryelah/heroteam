@@ -24,7 +24,7 @@ router.get('/all',function (req, res, next) {
 ACESSO: http://localhost:5000/users/login
   {
     "nome"  :  ""
-    "senha" :  ""
+    "senha" :  ""p-
   } 
 */
 

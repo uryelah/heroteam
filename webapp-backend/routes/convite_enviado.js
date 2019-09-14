@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mentor = require('../models/mentor.js');
+var convite_enviado = require('../models/convite_enviado.js');
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 */
 
 router.get('/team',function (req, res, next) {
-  mentor.selectMentor(req.body,function (err, rows) {
+  convite_enviado.selectconvite_enviado(req.body,function (err, rows) {
       if (err) {
           res.json(err);
       } else {
@@ -25,7 +25,7 @@ router.get('/team',function (req, res, next) {
 router.post('/insert', function (req, res, next) {
   
   if (req.body.nome != "" && req.body.email != "" && req.body.senha != ""){
-    mentor.insert(req.body, function (err, rows) {
+    convite_enviado.insert(req.body, function (err, rows) {
         if (err) {
           //res.json(err);
           res.send("Ocorreu um erro ao criar o seu time!");
@@ -51,7 +51,7 @@ router.post('/insert', function (req, res, next) {
 
 
 router.post('/update', function (req, res, next) {
-  mentor.update(req.body, function (err, rows) {
+  convite_enviado.update(req.body, function (err, rows) {
       if (err) {
           res.json(err);
           //res.send("Ocorreu um erro ao atualizar seu perfil!");
@@ -67,13 +67,13 @@ router.post('/update', function (req, res, next) {
 */
 
 router.delete('/delete', function (req, res, next) {
-  mentor.delete(req.body, function (err, rows) {
+  convite_enviado.delete(req.body, function (err, rows) {
       if (err) {
           //res.json(err);
-          res.send("Ocorreu um erro ao deletar o mentor!");
+          res.send("Ocorreu um erro ao deletar o convite_enviado!");
       } 
       else {
-          res.send("mentor excluido com sucesso!");    
+          res.send("convite_enviado excluido com sucesso!");    
           
       }
   });

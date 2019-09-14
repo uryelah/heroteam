@@ -7,6 +7,12 @@ var cors          = require('cors')           ;
 var indexRouter   = require('./routes/index') ;
 var usersRouter   = require('./routes/users') ;
 var teamRouter    = require('./routes/team')  ;
+var mentorRouter  = require('./routes/mentor');
+var convite_recebidoRouter = require('./routes/convite_recebido');
+var convite_enviado = require('./routes/convite_enviado');
+var habilidadeRouter = require ('./routes/habilidade');
+var hackathonRouter   = require('./routes/hackathon');
+var organizadoresRouter = require('./routes/organizadores');
 var projetoRouter = require('./routes/projeto');
 var BodyParser    = require('body-parser')    ;
 
@@ -40,6 +46,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/team', teamRouter);
+app.use('/mentor', mentorRouter);
+app.use('/convite_recebido', convite_recebidoRouter);
+app.use('/habilidade', habilidadeRouter);
+app.use('/hackathon', hackathonRouter);
+app.use('/organizadores', organizadoresRouter);
 app.use('/projeto', projetoRouter);
 
 // catch 404 and forward to error handler

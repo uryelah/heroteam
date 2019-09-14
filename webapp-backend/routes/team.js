@@ -19,7 +19,7 @@ router.get('/all',function (req, res, next) {
 );
 
 /*
-    "id_hackathon":"",
+  "id_hackathon":"",
 	"team_leader":"",
 	"nome":"",
 	"descricao":"",
@@ -28,7 +28,7 @@ router.get('/all',function (req, res, next) {
 	"devs":"",
 	"designers":"",
 	"business":"",
-    "marketing":"" 
+  "marketing":"" 
 */
 
 router.post('/insert', function (req, res, next) {
@@ -51,7 +51,7 @@ router.post('/insert', function (req, res, next) {
 });
 
 /*	
-    "team_leader":"",
+  "team_leader":"",
 	"nome":"",
 	"descricao":"",
 	"n_participante":"",
@@ -60,7 +60,7 @@ router.post('/insert', function (req, res, next) {
 	"designers":"",
 	"business":"",
 	"marketing":"",
-    "id":""
+  "id":""
 */
 
 router.post('/update', function (req, res, next) {

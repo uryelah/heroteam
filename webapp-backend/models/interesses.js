@@ -1,29 +1,29 @@
 var db = require('../dbconnection');
 
-var TABELA = 'MENTOR'      ,
+var TABELA = 'INTERESSES'             ,
     ID =          'ID'            ,
     ID_USUARIO=   'ID_USUARIO'    ,
-    ID_HACKATHON= 'ID_HACKATHON'  ;
+    NOME=         'NOME'          ;
 
-var MENTOR = {
-    selectMentor: function (data,callback) {
+var INTERESSES = {
+    selectInteresses: function (data,callback) {
         var queryString = "SELECT "
-                            + "MENTOR." + ID_USUARIO       + ", "
-                            + "MENTOR." + ID_HACKATHON     +
-                            " FROM "  + TABELA + " WHERE " + ID_HACKATHON + " = "+data.id_hackathon;
+                            + "INTERESSES." + ID_USUARIO        + ", "
+                            + "INTERESSES." + NOME              +
+                            " FROM "  + TABELA + " WHERE " + ID_USUARIO + " = "+data.id_usuario;
 
         return db.query(queryString, callback);
     },
     insert: function (data, callback) {
         var queryString =   "INSERT INTO " + TABELA + " ( "
                             + ID_USUARIO   + ", "
-                            + ID_HACKATHON + 
+                            + NOME + 
                         
                             ") VALUES (?,?);";
         var DATA_FIELDS = [ 
 
             data.id_usuario    ,
-            data.id_hackathon           
+            data.nome           
   
         ];
 
@@ -39,4 +39,4 @@ var MENTOR = {
         return db.query(queryString, DATA_FIELDS, callback);
     },
 };
-module.exports = MENTOR;
+module.exports = INTERESSES;

@@ -1,17 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var mentor = require('../models/mentor.js');
+var habilidade = require('../models/habilidade.js');
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-/*
-    "id_time":""
-*/
 
-router.get('/team',function (req, res, next) {
-  mentor.selectMentor(req.body,function (err, rows) {
+router.get('/all',function (req, res, next) {
+  habilidade.selectAll(function (err, rows) {
       if (err) {
           res.json(err);
       } else {
@@ -21,11 +18,23 @@ router.get('/team',function (req, res, next) {
 }
 );
 
+/*
+  "id_hackathon":"",
+	"habilidade_leader":"",
+	"nome":"",
+	"descricao":"",
+	"n_participante":"",
+	"completo":"",
+	"devs":"",
+	"designers":"",
+	"business":"",
+  "marketing":"" 
+*/
 
 router.post('/insert', function (req, res, next) {
   
   if (req.body.nome != "" && req.body.email != "" && req.body.senha != ""){
-    mentor.insert(req.body, function (err, rows) {
+    habilidade.insert(req.body, function (err, rows) {
         if (err) {
           //res.json(err);
           res.send("Ocorreu um erro ao criar o seu time!");
@@ -39,19 +48,23 @@ router.post('/insert', function (req, res, next) {
     res.send("Ocorreu um erro ao completar o seu cadastro!");
     console.log(req.body.nome,req.body.email,req.body.senha)
   }
-  
 });
 
-/*
-  "team_leader":"",
+/*	
+  "habilidade_leader":"",
 	"nome":"",
 	"descricao":"",
-	"link":""
+	"n_participante":"",
+	"completo":"",
+	"devs":"",
+	"designers":"",
+	"business":"",
+	"marketing":"",
+  "id":""
 */
 
-
 router.post('/update', function (req, res, next) {
-  mentor.update(req.body, function (err, rows) {
+  habilidade.update(req.body, function (err, rows) {
       if (err) {
           res.json(err);
           //res.send("Ocorreu um erro ao atualizar seu perfil!");
@@ -62,21 +75,18 @@ router.post('/update', function (req, res, next) {
   });
 });
 
-/*
-  "id":""
-*/
-
 router.delete('/delete', function (req, res, next) {
-  mentor.delete(req.body, function (err, rows) {
+  habilidade.delete(req.body, function (err, rows) {
       if (err) {
           //res.json(err);
-          res.send("Ocorreu um erro ao deletar o mentor!");
+          res.send("Ocorreu um erro ao deletar o habilidade!");
       } 
       else {
-          res.send("mentor excluido com sucesso!");    
+          res.send("habilidade excluido com sucesso!");    
           
       }
   });
 });
+
 
 module.exports = router;
